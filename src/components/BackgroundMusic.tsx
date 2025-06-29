@@ -5,45 +5,12 @@ import { Volume2, VolumeX } from 'lucide-react';
 export const BackgroundMusic = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    // Auto-play after user interaction (modern browsers require user interaction)
-    const handleFirstInteraction = () => {
-      if (audioRef.current && !isPlaying) {
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-        }).catch(() => {
-          console.log('Auto-play blocked by browser');
-        });
-      }
-      document.removeEventListener('click', handleFirstInteraction);
-    };
-
-    document.addEventListener('click', handleFirstInteraction);
-    return () => document.removeEventListener('click', handleFirstInteraction);
-  }, [isPlaying]);
-
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-        }).catch(() => {
-          console.log('Playback failed');
-        });
-      }
-    }
-  };
+  console.log('BackgroundMusic component rendered');
 
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
+    console.log('Music muted:', !isMuted);
   };
 
   return (
@@ -63,21 +30,10 @@ export const BackgroundMusic = () => {
           </button>
           
           <div className="text-sm text-gray-600">
-            {isPlaying ? '🎵 Playing' : '🎵 Click to start'}
+            🎵 Music
           </div>
         </div>
       </div>
-
-      <audio
-        ref={audioRef}
-        loop
-        preload="auto"
-        onEnded={() => setIsPlaying(false)}
-      >
-        {/* Using a royalty-free gentle instrumental as placeholder */}
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav" />
-        Your browser does not support the audio element.
-      </audio>
     </div>
   );
 };

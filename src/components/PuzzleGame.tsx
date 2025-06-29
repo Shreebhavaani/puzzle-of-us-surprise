@@ -19,6 +19,8 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    console.log('PuzzleGame component mounted');
+    
     // Initialize puzzle pieces - using placeholder image
     const initialPieces: PuzzlePiece[] = Array.from({ length: 8 }, (_, i) => ({
       id: i,
@@ -33,6 +35,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
       piece.currentPosition = index;
     });
     
+    console.log('Puzzle pieces initialized:', shuffled);
     setPieces(shuffled);
   }, []);
 
@@ -73,6 +76,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
     // Check if puzzle is solved
     const solved = pieces.every(piece => piece.id === piece.currentPosition);
     if (solved && pieces.length === 8 && !isComplete) {
+      console.log('Puzzle solved!');
       setIsComplete(true);
       toast("🎉 Amazing! You've completed our memory puzzle!");
       setTimeout(() => onSolved(), 2000);
@@ -88,6 +92,8 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
       backgroundSize: '400px 200px'
     };
   };
+
+  console.log('PuzzleGame rendering, pieces count:', pieces.length);
 
   return (
     <div className="max-w-2xl mx-auto">
