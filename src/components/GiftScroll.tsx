@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Heart, Gift, Star, Music, Camera, Coffee, Book, Gamepad2, Plane, Sun, Moon, Sparkles, Crown, Diamond, Flower, Cake, Balloon, Confetti, Rainbow, Zap } from 'lucide-react';
+import { Heart, Gift, Star, Music, Camera, Coffee, Book, Gamepad2, Plane, Sun, Moon, Sparkles, Crown, Diamond, Flower, Cake, PartyPopper, Zap, Rainbow } from 'lucide-react';
 
 const gifts = [
   { id: 1, icon: Heart, title: "First Day We Met", description: "Remember that awkward hello? Best accident ever!", color: "from-pink-400 to-red-400" },
@@ -18,8 +18,8 @@ const gifts = [
   { id: 12, icon: Diamond, title: "Precious Moments", description: "All the times you made ordinary days extraordinary", color: "from-cyan-500 to-blue-500" },
   { id: 13, icon: Flower, title: "Growth Together", description: "How we've both bloomed into better people", color: "from-green-500 to-emerald-500" },
   { id: 14, icon: Cake, title: "Birthday Wishes", description: "Here's to another year of amazing adventures!", color: "from-pink-500 to-red-500" },
-  { id: 15, icon: Balloon, title: "Celebration Mode", description: "Every day with you feels like a party", color: "from-red-500 to-pink-500" },
-  { id: 16, icon: Confetti, title: "Surprise Moments", description: "Like this website! Got you, didn't I?", color: "from-purple-500 to-pink-500" },
+  { id: 15, icon: PartyPopper, title: "Celebration Mode", description: "Every day with you feels like a party", color: "from-red-500 to-pink-500" },
+  { id: 16, icon: Star, title: "Surprise Moments", description: "Like this website! Got you, didn't I?", color: "from-purple-500 to-pink-500" },
   { id: 17, icon: Rainbow, title: "After Every Storm", description: "You always help me find the rainbow", color: "from-indigo-500 to-purple-500" },
   { id: 18, icon: Star, title: "Wish Upon A Star", description: "That our friendship lasts forever and always", color: "from-blue-500 to-indigo-500" },
   { id: 19, icon: Zap, title: "Electric Connection", description: "The energy between us that never fades", color: "from-yellow-500 to-red-500" },
