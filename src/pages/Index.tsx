@@ -18,17 +18,17 @@ const Index = () => {
   console.log('Index component rendering, isPuzzleSolved:', isPuzzleSolved, 'showScroll:', showScroll);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 via-yellow-50 to-pink-100 overflow-hidden relative">
       <BackgroundMusic />
       <ParticleEffect show={isPuzzleSolved} />
       
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-4 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent mb-4 animate-fade-in">
             Piece of Us
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            🎂 A Birthday Puzzle Just For You 🎂
+          <p className="text-lg md:text-xl text-orange-700 animate-fade-in font-medium" style={{ animationDelay: '0.5s' }}>
+            🎂 A Special Birthday Puzzle Just For You 🎂
           </p>
         </div>
 

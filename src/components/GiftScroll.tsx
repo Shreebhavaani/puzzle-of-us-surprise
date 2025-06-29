@@ -32,10 +32,10 @@ export const GiftScroll = () => {
   return (
     <div className="max-w-6xl mx-auto mt-12">
       <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent mb-4">
           ✨ Your Digital Gift Collection ✨
         </h2>
-        <p className="text-gray-600">
+        <p className="text-orange-700 font-medium">
           Click each gift to unwrap a special memory! 🎁
         </p>
       </div>
@@ -46,22 +46,22 @@ export const GiftScroll = () => {
           return (
             <Card
               key={gift.id}
-              className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-transparent hover:border-pink-300 group"
+              className="cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-transparent hover:border-orange-300 group bg-gradient-to-br from-white to-orange-50"
               onClick={() => setOpenGift(openGift === gift.id ? null : gift.id)}
             >
               <CardHeader className="text-center pb-2">
-                <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-r ${gift.color} flex items-center justify-center mb-3 group-hover:rotate-12 transition-transform duration-300`}>
+                <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-r ${gift.color} flex items-center justify-center mb-3 group-hover:rotate-12 transition-transform duration-300 shadow-lg`}>
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-lg font-bold text-gray-800">
+                <CardTitle className="text-lg font-bold text-orange-800">
                   Gift #{gift.id}
                 </CardTitle>
               </CardHeader>
               
               {openGift === gift.id && (
                 <CardContent className="animate-fade-in">
-                  <h3 className="font-bold text-purple-600 mb-2">{gift.title}</h3>
-                  <CardDescription className="text-gray-600 leading-relaxed">
+                  <h3 className="font-bold text-orange-600 mb-2">{gift.title}</h3>
+                  <CardDescription className="text-orange-700 leading-relaxed">
                     {gift.description}
                   </CardDescription>
                 </CardContent>
@@ -69,7 +69,7 @@ export const GiftScroll = () => {
               
               {openGift !== gift.id && (
                 <CardContent className="text-center">
-                  <p className="text-gray-500 text-sm">Click to unwrap! 🎁</p>
+                  <p className="text-orange-500 text-sm font-medium">Click to unwrap! 🎁</p>
                 </CardContent>
               )}
             </Card>
@@ -77,15 +77,42 @@ export const GiftScroll = () => {
         })}
       </div>
 
-      <div className="text-center mt-12 p-8 bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl">
-        <h3 className="text-2xl font-bold text-purple-600 mb-4">
-          🎂 Happy Birthday, Best Friend! 🎂
-        </h3>
-        <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
-          Thank you for being the most amazing friend anyone could ask for. 
-          Here's to another year of incredible memories, inside jokes, and adventures together! 
-          You deserve all the happiness in the world. 💕
-        </p>
+      <div className="text-center mt-12 p-10 bg-gradient-to-r from-orange-100 via-yellow-100 to-pink-100 rounded-3xl border-4 border-orange-200 shadow-2xl">
+        <div className="mb-6">
+          <h3 className="text-3xl md:text-4xl font-bold text-orange-600 mb-6 animate-bounce">
+            🎂 Happy Birthday, My Amazing Best Friend! 🎂
+          </h3>
+        </div>
+        
+        <div className="space-y-4 text-orange-800 text-lg leading-relaxed max-w-4xl mx-auto">
+          <p className="font-semibold text-xl">
+            Today is all about celebrating YOU and the incredible person you are! 🌟
+          </p>
+          
+          <p>
+            Thank you for being the most amazing friend anyone could ask for. You bring so much joy, laughter, and warmth into my life every single day. Your kindness, your humor, your loyalty, and your beautiful heart make this world a better place.
+          </p>
+          
+          <p>
+            From our crazy adventures to our deep midnight conversations, from our inside jokes that make no sense to anyone else, to the way you always know exactly what to say when I need it most - every moment with you is a treasure I hold close to my heart.
+          </p>
+          
+          <p>
+            You've been there through thick and thin, celebrating my victories and lifting me up during my struggles. You've made ordinary days extraordinary just by being yourself. That's the magic of true friendship, and that's the magic of YOU.
+          </p>
+          
+          <p className="font-semibold text-xl text-pink-600">
+            Here's to another year of incredible memories, spontaneous adventures, endless laughter, and a friendship that grows stronger with each passing day! 🎉
+          </p>
+          
+          <p className="text-2xl font-bold text-orange-600">
+            You deserve all the happiness, love, and amazing surprises this new year of life will bring! 💕✨
+          </p>
+          
+          <div className="flex justify-center space-x-2 text-3xl mt-6">
+            🎈🎊🎁🎂🌟💖🎈🎊🎁🎂🌟💖
+          </div>
+        </div>
       </div>
     </div>
   );

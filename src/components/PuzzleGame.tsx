@@ -98,18 +98,18 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-6">
-        <p className="text-gray-600 mb-4">
+        <p className="text-orange-700 mb-4 font-medium">
           Drag and drop the pieces to reveal our special memory! 🧩
         </p>
       </div>
       
-      <div className="grid grid-cols-4 gap-2 bg-white p-4 rounded-2xl shadow-2xl border-4 border-pink-200">
+      <div className="grid grid-cols-4 gap-2 bg-gradient-to-br from-white to-orange-50 p-4 rounded-2xl shadow-2xl border-4 border-orange-200">
         {Array.from({ length: 8 }).map((_, position) => {
           const piece = pieces.find(p => p.currentPosition === position);
           return (
             <div
               key={position}
-              className="aspect-square border-2 border-dashed border-pink-300 rounded-lg relative overflow-hidden hover:border-pink-400 transition-colors"
+              className="aspect-square border-2 border-dashed border-orange-300 rounded-lg relative overflow-hidden hover:border-orange-400 transition-colors"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, position)}
             >
@@ -128,7 +128,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
       
       {isComplete && (
         <div className="text-center mt-6 animate-bounce">
-          <p className="text-2xl font-bold text-pink-600">
+          <p className="text-2xl font-bold text-orange-600">
             Perfect! Just like our friendship! 💕
           </p>
         </div>
