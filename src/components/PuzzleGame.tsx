@@ -21,12 +21,12 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   useEffect(() => {
     console.log('PuzzleGame component mounted');
     
-    // Initialize puzzle pieces - using placeholder image
+    // Initialize puzzle pieces - using the uploaded image
     const initialPieces: PuzzlePiece[] = Array.from({ length: 8 }, (_, i) => ({
       id: i,
       correctPosition: i,
       currentPosition: Math.floor(Math.random() * 8), // Random initial positions
-      image: `https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop&crop=faces,center`
+      image: `/lovable-uploads/98dfc77c-2983-4dad-84f0-6a2b57eb5bac.png`
     }));
     
     // Shuffle the pieces
@@ -87,7 +87,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
     const row = Math.floor(pieceId / 4);
     const col = pieceId % 4;
     return {
-      backgroundImage: `url(https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop&crop=faces,center)`,
+      backgroundImage: `url(/lovable-uploads/98dfc77c-2983-4dad-84f0-6a2b57eb5bac.png)`,
       backgroundPosition: `${-col * 100}px ${-row * 100}px`,
       backgroundSize: '400px 200px'
     };
@@ -98,18 +98,18 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-6">
-        <p className="text-orange-700 mb-4 font-medium">
-          Drag and drop the pieces to reveal our special memory! 🧩
+        <p className="text-pink-700 mb-4 font-medium text-lg">
+          Drag and drop the pieces to reveal our special memory! 🧩✨
         </p>
       </div>
       
-      <div className="grid grid-cols-4 gap-2 bg-gradient-to-br from-white to-orange-50 p-4 rounded-2xl shadow-2xl border-4 border-orange-200">
+      <div className="grid grid-cols-4 gap-2 bg-gradient-to-br from-white to-pink-50 p-4 rounded-2xl shadow-2xl border-4 border-pink-200">
         {Array.from({ length: 8 }).map((_, position) => {
           const piece = pieces.find(p => p.currentPosition === position);
           return (
             <div
               key={position}
-              className="aspect-square border-2 border-dashed border-orange-300 rounded-lg relative overflow-hidden hover:border-orange-400 transition-colors"
+              className="aspect-square border-2 border-dashed border-pink-300 rounded-lg relative overflow-hidden hover:border-pink-400 transition-colors"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, position)}
             >
@@ -128,7 +128,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
       
       {isComplete && (
         <div className="text-center mt-6 animate-bounce">
-          <p className="text-2xl font-bold text-orange-600">
+          <p className="text-2xl font-bold text-pink-600">
             Perfect! Just like our friendship! 💕
           </p>
         </div>

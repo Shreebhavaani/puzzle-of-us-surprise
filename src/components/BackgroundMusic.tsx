@@ -11,8 +11,10 @@ export const BackgroundMusic = () => {
   useEffect(() => {
     console.log('BackgroundMusic component rendered');
     
-    // Try to load the audio
+    // Try to load the audio and set volume
     if (audioRef.current) {
+      audioRef.current.volume = 0.3;
+      
       audioRef.current.addEventListener('canplaythrough', () => {
         console.log('Audio loaded successfully');
         setIsLoaded(true);
@@ -89,11 +91,9 @@ export const BackgroundMusic = () => {
         ref={audioRef}
         loop
         preload="auto"
-        volume={0.3}
         onEnded={() => setIsPlaying(false)}
         onLoadedData={() => setIsLoaded(true)}
       >
-        {/* Using a simple, soft background music that should work */}
         <source src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg" />
         <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg" />
         <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+LyvmEaBS+m4/HTgC4FLYnU8tGELwQt" />
