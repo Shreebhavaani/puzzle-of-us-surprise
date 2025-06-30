@@ -22,10 +22,10 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
     console.log('PuzzleGame component mounted');
     
     // Initialize puzzle pieces - using the uploaded image
-    const initialPieces: PuzzlePiece[] = Array.from({ length: 8 }, (_, i) => ({
+    const initialPieces: PuzzlePiece[] = Array.from({ length: 9 }, (_, i) => ({
       id: i,
       correctPosition: i,
-      currentPosition: Math.floor(Math.random() * 8), // Random initial positions
+      currentPosition: Math.floor(Math.random() * 9), // Random initial positions
       image: `/lovable-uploads/98dfc77c-2983-4dad-84f0-6a2b57eb5bac.png`
     }));
     
@@ -75,7 +75,7 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   useEffect(() => {
     // Check if puzzle is solved
     const solved = pieces.every(piece => piece.id === piece.currentPosition);
-    if (solved && pieces.length === 8 && !isComplete) {
+    if (solved && pieces.length === 9 && !isComplete) {
       console.log('Puzzle solved!');
       setIsComplete(true);
       toast("🎉 Amazing! You've completed our memory puzzle!");
@@ -84,12 +84,19 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
   }, [pieces, onSolved, isComplete]);
 
   const getPieceStyle = (pieceId: number) => {
-    const row = Math.floor(pieceId / 4);
-    const col = pieceId % 4;
+    // Calculate position in 3x3 grid
+    const row = Math.floor(pieceId / 3);
+    const col = pieceId % 3;
+    
+    // Each piece is 133.33px wide and 133.33px tall (400px / 3)
+    const pieceWidth = 133.33;
+    const pieceHeight = 133.33;
+    
     return {
       backgroundImage: `url(/lovable-uploads/98dfc77c-2983-4dad-84f0-6a2b57eb5bac.png)`,
-      backgroundPosition: `${-col * 100}px ${-row * 100}px`,
-      backgroundSize: '400px 200px'
+      backgroundPosition: `${-col * pieceWidth}px ${-row * pieceHeight}px`,
+      backgroundSize: '400px 400px',
+      backgroundRepeat: 'no-repeat'
     };
   };
 
@@ -103,13 +110,13 @@ export const PuzzleGame = ({ onSolved }: PuzzleGameProps) => {
         </p>
       </div>
       
-      <div className="grid grid-cols-4 gap-2 bg-gradient-to-br from-white to-pink-50 p-4 rounded-2xl shadow-2xl border-4 border-pink-200">
-        {Array.from({ length: 8 }).map((_, position) => {
+      <div className="grid grid-cols-3 gap-2 bg-gradient-to-br from-white to-pink-50 p-4 rounded-2xl shadow-2xl border-4 border-pink-200 w-fit mx-auto">
+        {Array.from({ length: 9 }).map((_, position) => {
           const piece = pieces.find(p => p.currentPosition === position);
           return (
             <div
               key={position}
-              className="aspect-square border-2 border-dashed border-pink-300 rounded-lg relative overflow-hidden hover:border-pink-400 transition-colors"
+              className="w-32 h-32 border-2 border-dashed border-pink-300 rounded-lg relative overflow-hidden hover:border-pink-400 transition-colors"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, position)}
             >
